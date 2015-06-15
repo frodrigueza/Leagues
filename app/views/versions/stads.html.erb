@@ -1,0 +1,32 @@
+<%= render layout:'versions/version' do %>
+	<h1>Estadisticas</h1>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					Posiciones
+				</div>
+				<div class="panel-body">
+					<%= render 'versions/stads_table', stage:Stage.first %>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					Goleadores/tarjetas
+				</div>
+				<div class="panel-body">
+					<%= render 'versions/top_scorers_table', stage:Stage.first %>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+<% end %>

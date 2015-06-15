@@ -1,0 +1,37 @@
+<div class="row" id="stage_rounds">
+	<div class="col-md-12">
+		<table class="table">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Local</th>
+					<th></th>
+					<th>VS</th>
+					<th></th>
+					<th>Visita</th>
+					<th></th>
+				</tr>
+			</thead>
+
+			<% if @inscription.stage_games(stage).count > 0 %>
+				<tbody>
+					<% @inscription.stage_games(stage).each do |sg| %>
+						<tr>
+							<td><%= sg[:round].name %></td>
+							<td><%= sg[:game].local_team.name %></td>
+							<td><%= sg[:game].f_local_goals %></td>
+							<td></td>
+							<td><%= sg[:game].f_away_goals %></td>
+							<td><%= sg[:game].away_team.name %></td>
+							<td><%= link_to 'detalles', sg[:game] %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			<% else %>
+				<tr>
+					<td colspan="7"><b><%= @inscription.team.name %></b> no jugó partidos en esta etapa de <b><%= stage.version.name %></b></td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+</div>

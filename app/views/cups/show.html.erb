@@ -1,0 +1,17 @@
+<h1><%= @cup.name %></h1>
+<h2>Versiones:</h2>
+	<div class="row"></div>
+		<div class="col-md-12">
+			<table class="table">
+				<!-- versiones -->
+				<% @cup.versions.each do |v| %>
+					<tr>
+						<td>
+							<%= link_to v.name, v %>
+						</td>
+					</tr>
+				<% end%>
+
+			</table>
+		</div>
+	</div>

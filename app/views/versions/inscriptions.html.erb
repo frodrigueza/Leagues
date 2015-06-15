@@ -1,0 +1,23 @@
+<%= render layout:'version' do %>
+
+	<h1>Equipos inscritos en <%= @version.name %></h1>
+
+	<div class="row">
+		<div class="col-md-12">
+			<table>
+				<thead>
+					<tr>
+						<th>Nombre del equipo</th>
+					</tr>
+				</thead>
+
+				<% @inscriptions.each do |i| %>
+					<tr>
+						<td><%= i.team.name %></td>
+					</tr>
+				<% end %>
+			</table>
+		</div>		
+	</div>
+
+<% end %>

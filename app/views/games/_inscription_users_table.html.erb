@@ -1,0 +1,23 @@
+<div class="col-md-6">
+	<div class="panel panel-default">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Jugador</th>
+					<th>G</th>
+					<th>A</th>
+					<th>R</th>
+				</tr>
+			</thead>
+
+			<% inscription.participations.each do |p| %>
+				<tr>
+					<td><%= p.user.f_name %></td>
+					<td><%= p.game_goals(@game).count %></td>
+					<td><%= p.game_cards(@game, 1).count %></td>
+					<td><%= p.game_cards(@game, 2).count %></td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+</div>

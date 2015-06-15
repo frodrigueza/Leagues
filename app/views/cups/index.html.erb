@@ -1,0 +1,29 @@
+<h1>Listing cups</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>League</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cups.each do |cup| %>
+      <tr>
+        <td><%= cup.name %></td>
+        <td><%= cup.league %></td>
+        <td><%= link_to 'Show', cup %></td>
+        <td><%= link_to 'Edit', edit_cup_path(cup) %></td>
+        <td><%= link_to 'Destroy', cup, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cup', new_cup_path %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  round_id: 
+  local_team_id: 1
+  away_team_id: 1
+  player_of_the_match_id: 1
+
+two:
+  round_id: 
+  local_team_id: 1
+  away_team_id: 1
+  player_of_the_match_id: 1

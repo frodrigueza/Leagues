@@ -1,0 +1,72 @@
+Ejemplos de instancias
+
+League
+	name: Liga Oriente de Futbol
+
+Cup 
+	name: Copa Fútbol Varones Junior
+	league_id
+
+Version
+	name: Apertura 2015
+	cup_id
+
+Inscription
+	version_id
+	team_id
+	# Es la inscripcion de un equipo en la version de una copa.
+
+Participation
+	inscription_id
+	user_id
+	# Es la participacion de un jugador en la inscripcion de un equipo en una version de copa
+
+User
+	name: Felipe
+	lastname: Rodriguez
+	birthdate: 8/9/90
+	email: feliperodriguezarteaga@gmail.com
+	password: ********
+	(device)
+
+Membership
+	role: 1 (normal user), 2(captain)
+	user_id
+	team_id
+
+Team
+	name
+
+LeagueUser
+	role: 1(dueño)
+
+Stage
+	version_id
+	name: "Fase regular"
+
+Round
+	stage_id
+	name: "Fecha 1"
+
+Game
+	round_id
+	local_team_id
+	away_team_id
+
+Goal
+	game_id: 1
+	user_id: 1
+
+Card
+	game_id: 1
+	user_id: 1
+	card_type: 2
+
+Group
+	stage_id
+	name: "Grupo 1"
+	order: 1
+
+GroupInscription
+	group_id
+	inscription_id

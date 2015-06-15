@@ -1,0 +1,28 @@
+<div class="row">
+	<div class="col-md-12">
+		<h1><%= @user.f_name %></h1>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				Equipos
+			</div>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Nombre equipo</th>
+					</tr>
+				</thead>
+				<% @user.teams.each do |t| %>
+					<tr>
+						<td><%= link_to t.name, t %></td>
+					</tr>
+				<% end %>
+			</table>
+		</div>		
+	</div>	
+</div>

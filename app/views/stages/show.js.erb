@@ -1,0 +1,7 @@
+<% if !@inscription %>
+	// para la vista de fixture
+	$('#fixture_content').replaceWith('<%= escape_javascript(render "versions/fixture_content", stage: @stage) %>');
+<% else %>
+	// para la vista de una inscripcion en particular y sus partidos
+	$('#stage_rounds').replaceWith('<%= escape_javascript(render "inscriptions/stage_rounds", stage: @stage) %>');
+<% end %>

@@ -1,0 +1,25 @@
+@import 'colours';
+
+.menu_1{
+	width: 100%;
+	tr{
+		background: $black_gradient;
+		td{
+			padding: 10px 20px;
+			color: white;
+			float: left;
+		}
+	}
+}
+
+.menu_2{
+	width: 100%;
+	tr{
+		background: $black_gradient;
+		td{
+			color: white;
+			float: left;
+			padding: 10px 20px;
+		}
+	}
+}

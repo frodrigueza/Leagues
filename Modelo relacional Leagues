@@ -1,0 +1,73 @@
+Modelo relacional Leagues
+
+League
+	name
+
+Cup 
+	name
+	league_id
+
+Version
+	name
+	cup_id
+
+Inscription
+	version_id
+	team_id
+
+Participation
+	inscription_id
+	user_id
+
+User
+	name
+	lastname
+	birthdate
+	email
+	password	
+	(device)
+
+Membership
+	role
+	user_id
+	team_id
+
+Team
+	name
+
+LeagueUser
+	user_id
+	league_id
+	role
+
+Stage
+	version_id
+	name
+
+Round
+	stage_id
+	name
+
+Game
+	round_id
+	local_team_id
+	away_team_id
+	player_of_the_match_id
+
+Goal
+	user_id
+	game_id
+
+Card
+	user_id
+	game_id
+	card_type(1 = amarilla, 2 = roja)
+
+Group
+	stage_id
+	name
+	order
+
+GroupInscription
+	group_id
+	inscription_id

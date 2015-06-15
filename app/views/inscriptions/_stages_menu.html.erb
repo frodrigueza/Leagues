@@ -1,0 +1,9 @@
+<div class="row not_together">
+	<div class="col-md-12">
+		<ul class="nav nav-pills option_group">
+			<% @version.stages.each do |s| %>
+				<li><%= link_to s.name, stage_path(s, inscription_id: @inscription.id ), remote:true %></li>
+			<% end %>
+		</ul>
+	</div>
+</div>

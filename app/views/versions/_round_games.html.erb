@@ -1,0 +1,31 @@
+<% if round != nil %>
+	<table class="table" id="round_games">
+		<thead>
+			<tr>
+				<th>Local</th>
+				<th></th>
+				<th>VS</th>
+				<th></th>
+				<th>Visita</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% round.games.each do |g| %>
+				<tr>
+					<td><%= link_to g.local_team.name, version_inscription_path(@version, g.local_inscription) %></td>
+					<td><%= g.f_local_goals %></td>
+					<td></td>
+					<td><%= g.f_away_goals %></td>
+					<td><%= link_to g.away_team.name, version_inscription_path(@version, g.away_inscription) %></td>
+					<td><%= link_to 'detalles', g %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+<% else %>
+	
+	No hay fechas 
+
+<% end %>

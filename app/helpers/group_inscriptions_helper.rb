@@ -1,0 +1,2 @@
+module GroupInscriptionsHelper
+end

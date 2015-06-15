@@ -1,0 +1,48 @@
+<%= render layout:'versions/version' do %>
+
+	<h1><%= @inscription.team.name %> en <%= @version.name %> de <%= @version.cup.name %></h1>
+
+	<div class="row not_together">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					Jugadores inscritos
+				</div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>N°</th>
+							<th>Nombre</th>
+							<th>G</th>
+							<th>A</th>
+							<th>R</th>
+						</tr>
+					</thead>
+
+					<% @inscription.participations.sort_by { |x| x.number }.each do |p| %>
+						<tr>
+							<td><%= p.number %></td>
+							<td><%= p.user.f_name %></td>
+							<td><%= p.version_goals(@version).count %></td>
+							<td><%= p.version_cards(@version, 1).count %></td>
+							<td><%= p.version_cards(@version, 2).count %></td>
+						</tr>
+					<% end %>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					Partidos
+				</div>
+				<%= render 'inscriptions/stages_menu' %>
+				<%= render 'inscriptions/stage_rounds', stage: @version.stages.last %>
+			</div>
+		</div>
+	</div>
+
+<% end %>

@@ -1,0 +1,22 @@
+<div class="col-md-6">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Jugador</th>
+				<th>Equipo</th>
+				<th>G</th>
+				<th>A</th>
+				<th>R</th>
+			</tr>
+		</thead>
+		<% @participations_stads.each do |p| %>
+			<tr>
+				<td><%= link_to p[:participation].user.f_name, version_participation_path(@version, p[:participation]) %></td>
+				<td><%= link_to p[:participation].inscription.team.name, version_inscription_path(@version, p[:participation].inscription) %></td>
+				<td><%= p[:goals] %></td>
+				<td><%= p[:yellows] %></td>
+				<td><%= p[:reds] %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>

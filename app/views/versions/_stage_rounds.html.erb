@@ -1,0 +1,9 @@
+<table class="menu_2">
+	<tr>
+		<% stage.rounds.each do |r| %>
+			<td>
+				<%= link_to r.name, r, remote: true %>
+			</td>
+		<% end %>
+	</tr>
+</table>

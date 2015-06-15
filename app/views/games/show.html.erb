@@ -1,0 +1,28 @@
+<div class="row not_together">
+	<div class="col-md-12">
+		<table class="full text-center">
+			<tr>
+				<td class="col-md-4"><h1><%= @game.local_team.name %></h1></td>
+				<td class="col-md-1"><h3><%= @game.f_local_goals %></h3></td>
+				<td class="col-md-2"> <h2><small>VS</small></h2> </td>
+				<td class="col-md-1"><h3><%= @game.f_away_goals %></h3></td>
+				<td class="col-md-4"><h1><%= @game.away_team.name %></h1></td>
+			</tr>
+			<tr>
+				<td colspan="5">
+					<%= @game.round.stage.name %>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5">
+					Fecha: <%= @game.round.name %>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<div class="row not_together">
+	<%= render 'inscription_users_table', inscription: @game.local_inscription %>
+	<%= render 'inscription_users_table', inscription: @game.away_inscription %>
+</div>

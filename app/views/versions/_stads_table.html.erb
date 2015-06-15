@@ -1,0 +1,39 @@
+<div class="row">
+	<div class="col-md-12">
+		<h3><%= stage.name %></h3>
+			<% stage.groups.each do |g| %>
+			<h4><%= g.name %></h4>
+			<table class="table">
+				<tr>
+					<th></th>	
+					<th class="col-md-4">Equipo</th>	
+					<th>PJ</th>	
+					<th>PG</th>	
+					<th>PE</th>	
+					<th>PP</th>	
+					<th>GF</th>	
+					<th>GC</th>	
+					<th>Dif</th>
+					<th>Puntos</th>	
+				</tr>
+
+				<% j = 1 %>
+				<% g.stads.each do |st| %>
+				<tr>
+					<td><%= j %></td>
+					<td><%= link_to st[:inscription].team.name, version_inscription_path(@version, st[:inscription]) %></td>
+					<td><%= st[:pg] %></td>
+					<td><%= st[:wg] %></td>
+					<td><%= st[:tg] %></td>
+					<td><%= st[:lg] %></td>
+					<td><%= st[:goals_for] %></td>
+					<td><%= st[:goals_against] %></td>
+					<td><%= st[:dif] %></td>
+					<td><%= st[:points] %></td>
+				</tr>
+					<% j+= 1%>
+				<% end %>
+			</table>
+		<% end %>
+	</div>
+</div>
