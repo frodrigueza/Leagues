@@ -1,14 +1,20 @@
-<p id="notice"><%= notice %></p>
+<%= render layout:'versions/version' do %>
 
-<p>
-  <strong>Inscription:</strong>
-  <%= @participation.inscription %>
-</p>
+<div class="row">
+	<div class="col-md-12">
+		<div class="page-header">
+			<h1><%= @participation.user.f_name %> <small><%= @version.name %></small></h1>
+		</div>
+	</div>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @participation.user %>
-</p>
 
-<%= link_to 'Edit', edit_participation_path(@participation) %> |
-<%= link_to 'Back', participations_path %>
+
+<div class="row">
+	<div class="col-md-12">
+		<%= render 'participation_games', participation: @participation %>
+	</div>
+</div>
+
+
+<% end %>

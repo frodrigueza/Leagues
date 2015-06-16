@@ -2,11 +2,14 @@
 	<table class="table" id="round_games">
 		<thead>
 			<tr>
-				<th>Local</th>
-				<th></th>
+				<th class="col-md-2">Local</th>
+				<th class="col-md-1"></th>
 				<th>VS</th>
-				<th></th>
-				<th>Visita</th>
+				<th class="col-md-1"></th>
+				<th class="col-md-2">Visita</th>
+				<th>Día</th>
+				<th>Hora</th>
+				<th>Lugar</th>
 				<th></th>
 			</tr>
 		</thead>
@@ -18,14 +21,12 @@
 					<td></td>
 					<td><%= g.f_away_goals %></td>
 					<td><%= link_to g.away_team.name, version_inscription_path(@version, g.away_inscription) %></td>
+					<td><%= g.random_date %></td>
+					<td><%= g.random_time %></td>
+					<td><%= g.random_place %></td>
 					<td><%= link_to 'detalles', g %></td>
 				</tr>
 			<% end %>
 		</tbody>
 	</table>
-
-<% else %>
-	
-	No hay fechas 
-
 <% end %>

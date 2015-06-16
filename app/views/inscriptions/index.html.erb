@@ -1,23 +1,18 @@
 <%= render layout:'versions/version' do %>
 
-  <h1>Equipos inscritos en <%= @version.name %></h1>
+<div class="row">
+  <div class="col-md-12">
+    <div class="page-header">
+      <h1>Equipos inscritos en <%= @version.name %></h1>
+  </div>
+</div>
+
 
   <div class="row">
     <div class="col-md-12">
-      <table>
-        <thead>
-          <tr>
-            <th>Nombre del equipo</th>
-          </tr>
-        </thead>
-
+      <ol>
         <% @inscriptions.sort_by{|x| x.team.name }.each do |i| %>
-          <tr>
-            <td><%= link_to i.team.name, version_inscription_path(@version, i) %></td>
-          </tr>
+            <li><%= link_to i.team.name, version_inscription_path(@version, i) %></li>
         <% end %>
-      </table>
-    </div>    
-  </div>
-
+      </ol>
 <% end %>

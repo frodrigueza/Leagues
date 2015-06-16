@@ -2,7 +2,7 @@
 	<div class="col-md-12">
 		<h3><%= stage.name %></h3>
 			<% stage.groups.each do |g| %>
-			<h4><%= g.name %></h4>
+			<h4 class="text-muted"><%= g.name %></h4>
 			<table class="table">
 				<tr>
 					<th></th>	
@@ -14,7 +14,8 @@
 					<th>GF</th>	
 					<th>GC</th>	
 					<th>Dif</th>
-					<th>Puntos</th>	
+					<th>Rend</th>
+					<th>Pts</th>	
 				</tr>
 
 				<% j = 1 %>
@@ -29,7 +30,8 @@
 					<td><%= st[:goals_for] %></td>
 					<td><%= st[:goals_against] %></td>
 					<td><%= st[:dif] %></td>
-					<td><%= st[:points] %></td>
+					<td class="text-warning"><%= st[:rend] %> %</td>
+					<td class="text-info"><b><%= st[:points] %></b></td>
 				</tr>
 					<% j+= 1%>
 				<% end %>

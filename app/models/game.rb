@@ -43,6 +43,22 @@ class Game < ActiveRecord::Base
 		end
 	end
 
+	def random_place
+		['Cancha 1', 'Cancha 2', 'Cancha 3', 'Cancha 4'].sample
+	end
+
+	def random_date
+		'28 Junio 2015'
+	end
+
+	def random_time
+		'22:00'
+	end
+
+	def f_participations(inscription)
+		inscription.participations.sort_by {|p| [p.game_goals(self).count, p.game_cards(self, 1).count, p.game_cards(self, 2).count] }.reverse
+	end
+
 
 
 	# que se juegue el partido aleatoriamente

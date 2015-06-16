@@ -2,15 +2,19 @@
 
 	<div class="row not_together">
 		<div class="col-md-12">
-			<ul class="nav nav-pills">
+			<ul class="pager">
 				<% @version.stages.each do |s| %>
-					<li><%= link_to s.name, s, remote: true %></li>
+					<li><%= link_to s.name, version_stage_path(@version, s), remote: true %></li>
 				<% end %>
 			</ul>
 		</div>
 	</div>
 
-	<%= render 'fixture_content', stage: @version.stages.first %>
+	<div class="row not_together">
+		<div class="col-md-12">
+			<%= render 'fixture_content', stage: @version.stages.first %>
+		</div>
+	</div>
 
 
 

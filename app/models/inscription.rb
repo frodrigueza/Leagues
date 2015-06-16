@@ -25,7 +25,7 @@ class Inscription < ActiveRecord::Base
 		array
 	end
 
-	def games(stage)
+	def games_on_stage(stage)
 		games_array = []
 		stage.rounds.each do |r|
 			r.games.select {|x| x.local_inscription_id == self.id || x.away_inscription_id == self.id}.each do |g|
@@ -34,6 +34,17 @@ class Inscription < ActiveRecord::Base
 		end
 
 		games_array
+	end
+
+	def games_on_version(version)
+		array = []
+		version.stages.each do |s|
+			games_on_stage(s).each do |g|
+				array << g
+			end
+		end
+
+		array.sort_by {|x| [x.round.stage_id, x.round_id]}
 	end
 
 	def stads(stage)
@@ -45,6 +56,7 @@ class Inscription < ActiveRecord::Base
 		goals_for = 0
 		goals_against = 0
 		dif = 0
+		rend = 0
 
 		games(stage).each do |g|
 			local_goals = g.local_goals
@@ -85,9 +97,12 @@ class Inscription < ActiveRecord::Base
 			end
 		end
 
+		rend = ((points * 100 )/(pg * 3)).to_i
+
 		stads_hash = {
 			:inscription => self,
 			:points => points,
+			:rend => rend,
 			:pg => pg,
 			:wg => wg,
 			:tg => tg,

@@ -1,23 +1,36 @@
-<h1><%= @league.name %></h1>
-<h2>Copas</h2>
+<div class="row">
+	<div class="col-md-12">
+		<div class="page-header">
+			<h1><%= @league.name %></h1>
+		</div>
+	</div>
+</div>
+
 
 <div class="row">
 	<div class="col-md-12">
-		<table class="table">
-			<thead>
-				<th>
-					Nombre copa
-				</th>
-				<th>
-					Equipos
-				</th>
-			</thead>
-			<% @league.cups.each do |cup| %>
-				<tr>
-					<td><%= cup.name %></td>
-					<td><%= cup.versions.last.inscriptions.count %></td>
-				</tr>
-			<% end %>
-		</table>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<b>Copas</b>
+			</div>
+			<div class="panel-body">
+				<table class="table">
+					<thead>
+						<th>
+							Nombre copa
+						</th>
+						<th>
+							Versiones
+						</th>
+					</thead>
+					<% @league.cups.each do |cup| %>
+						<tr>
+							<td><%= link_to cup.name, cup %></td>
+							<td><%= cup.versions.count %></td>
+						</tr>
+					<% end %>
+				</table>
+			</div>
+		</div>
 	</div>
 </div>

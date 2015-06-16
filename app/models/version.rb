@@ -19,7 +19,18 @@ class Version < ActiveRecord::Base
 			end
 		end
 
-		top_scorer_array.sort_by { |x| x[:goals].to_i }.reverse
+		top_scorer_array.sort_by { |x| [x[:goals].to_i, x[:yellows], x[:reds]] }.reverse
+	end
+
+	def participations
+		array = []
+		inscriptions.each do |i|
+			i.participations.each do |i|
+				array << i
+			end
+		end	
+
+		array
 	end
 
 

@@ -1,10 +1,11 @@
 <div class="row version content_container">
 		<table class="menu_1">
 			<tr>
-				<td><%= link_to 'Equipos inscritos', version_inscriptions_path() %></td>
-				<td><%= link_to 'Fixture', version_fixture_path() %></td>
-				<td><%= link_to 'Grupos', version_groups_path() %></td>
-				<td><%= link_to 'Estadisticas', version_stads_path() %></td>
+				<td><%= link_to 'Inicio', @version %></td>
+				<td><%= link_to 'Equipos inscritos', version_inscriptions_path(@version) %></td>
+				<td><%= link_to 'Fixture', version_fixture_path(@version) %></td>
+				<td><%= link_to 'Grupos', version_groups_path(@version) %></td>
+				<td><%= link_to 'Estadisticas', version_stads_path(@version) %></td>
 			</tr>
 		</table>
 

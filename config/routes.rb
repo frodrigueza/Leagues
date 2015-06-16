@@ -23,6 +23,8 @@ Leagues::Application.routes.draw do
     resources :inscriptions
     resources :participations
     resources :groups
+    resources :rounds
+    resources :stages
   end
 
   resources :cups

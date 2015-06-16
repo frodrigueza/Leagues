@@ -1,17 +1,39 @@
-<h1><%= @cup.name %></h1>
-<h2>Versiones:</h2>
-	<div class="row"></div>
-		<div class="col-md-12">
-			<table class="table">
-				<!-- versiones -->
-				<% @cup.versions.each do |v| %>
-					<tr>
-						<td>
-							<%= link_to v.name, v %>
-						</td>
-					</tr>
-				<% end%>
 
-			</table>
+<div class="row">
+	<div class="col-md-12">
+		<div class="page-header">
+			<h1><%= @cup.name %></h1>
 		</div>
 	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Versiones
+			</div>
+
+			<div class="panel-body">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Versión</th>
+							<th>Equipos inscritos</th>
+							<th>Jugadores</th>
+						</tr>
+					</thead>
+					<!-- versiones -->
+					<% @cup.versions.each do |v| %>
+						<tr>
+							<td><%= link_to v.name, v %></td>
+							<td><%= v.inscriptions.count %></td>								
+							<td><%= v.participations.count %></td>								
+						</tr>
+					<% end%>
+
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

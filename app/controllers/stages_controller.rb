@@ -71,6 +71,10 @@ class StagesController < ApplicationController
       if params[:inscription_id]
         @inscription = Inscription.find(params[:inscription_id])
       end
+
+      if params[:version_id]
+        @version = Version.find(params[:version_id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

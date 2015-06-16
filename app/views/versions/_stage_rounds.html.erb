@@ -1,9 +1,11 @@
-<table class="menu_2">
-	<tr>
+<% if stage.rounds.count > 0 %>
+	
+
+	<ul class="nav nav-tabs">
 		<% stage.rounds.each do |r| %>
-			<td>
-				<%= link_to r.name, r, remote: true %>
-			</td>
+			<li role="presentation"><%= link_to r.name, version_round_path(@version, r), remote: true %></li>
 		<% end %>
-	</tr>
-</table>
+	</ul>
+<% else %>
+	<h3 class="text-info">No hay fechas programadas para esta etapa</h3>
+<% end %>

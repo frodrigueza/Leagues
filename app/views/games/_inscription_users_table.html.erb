@@ -10,7 +10,7 @@
 				</tr>
 			</thead>
 
-			<% inscription.participations.each do |p| %>
+			<% @game.f_participations(inscription).each do |p| %>
 				<tr>
 					<td><%= p.user.f_name %></td>
 					<td><%= p.game_goals(@game).count %></td>
