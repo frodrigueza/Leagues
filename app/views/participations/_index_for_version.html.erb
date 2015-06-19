@@ -1,0 +1,19 @@
+<%= render layout:'versions/version' do %>
+    <%= render 'versions/stads_header' %>
+    <%= render 'versions/stads_menu' %>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Goleadores/tarjetas
+                </div>
+                <div class="panel-body">
+                    <%= render 'versions/top_scorers_table', stage:Stage.first %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<% end %>

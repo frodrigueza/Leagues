@@ -65,7 +65,7 @@ class VersionsController < ApplicationController
   end
 
   def stads
-    @participations_stads = @version.participations_stads
+    
   end
 
   private

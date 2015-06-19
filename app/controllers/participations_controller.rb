@@ -4,7 +4,9 @@ class ParticipationsController < ApplicationController
   # GET /participations
   # GET /participations.json
   def index
-    @participations = Participation.all
+    if @version
+      @participations_stads = @version.participations_stads
+    end
   end
 
   # GET /participations/1

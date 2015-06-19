@@ -6,6 +6,8 @@
 		<table class="table">
 			<thead>
 				<tr>
+					<th>Día</th>
+					<th>Hora</th>
 					<th>Etapa</th>
 					<th>Fecha</th>
 					<th>Local</th>
@@ -13,26 +15,22 @@
 					<th>VS</th>
 					<th></th>
 					<th>Visita</th>
-					<th>Día</th>
-					<th>Hora</th>
-					<th>G</th>
-					<th>A</th>
-					<th>R</th>
+					<%= render 'layouts/goals_cards_theaders' %>
 					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				<% @participation.inscription.games_on_version(@version).each do |g| %>
 					<tr>
+						<td><%= g.random_date %></td>
+						<td><%= g.random_time %></td>
 						<td><%= g.round.stage.name %></td>
 						<td><%= g.round.name %></td>
 						<td><%= link_to g.local_team.name, version_inscription_path(@version, g.local_inscription) %></td>
-						<td><%= g.f_local_goals %></td>
+						<td><b><%= g.f_local_goals %></b></td>
 						<td></td>
-						<td><%= g.f_away_goals %></td>
+						<td><b><%= g.f_away_goals %></b></td>
 						<td><%= link_to g.away_team.name, version_inscription_path(@version, g.away_inscription) %></td>
-						<td><%= g.random_date %></td>
-						<td><%= g.random_time %></td>
 						<td><%= participation.game_goals(g).count %></td>
 						<td><%= participation.game_cards(g, 1).count %></td>
 						<td><%= participation.game_cards(g, 2).count %></td>

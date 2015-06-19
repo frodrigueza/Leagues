@@ -1,0 +1,10 @@
+<div class="row">
+	<div class="col-md-12">
+		<ul class="nav nav-tabs">
+			<li class="<%= params[:action] == 'stads' ? 'active' : '' %>"><%= link_to 'Posiciones', version_stads_path(@version) %></li>
+			<li class="<%= params[:action] == 'index' ? 'active' : '' %>"><%= link_to 'Jugadores', version_participations_path(@version) %></li>
+		</ul>
+	</div>
+</div>
+<div class="row not_together">
+</div>

@@ -1,5 +1,11 @@
 <%= render layout:'versions/version' do %>
-    <h1>Grupos</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <h1>Grupos</h1>
+            </div>
+        </div>
+    </div>
 
     <% @version.stages.each do |s| %>
         <h2><% s.name %></h2>
