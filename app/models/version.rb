@@ -33,5 +33,20 @@ class Version < ActiveRecord::Base
 		array
 	end
 
+	# Equipo (inscripcion) en el que jugo un jugador determinado en esta version
+	def user_inscription(user)
+		inscriptions.each do |i|
+			i.participations.each do |p|
+				if p.user == user
+					return i
+				end
+			end
+		end
+	end
+
+	def user_participation(user)
+		user.participations.select {|p| p.inscription.version == self }.first
+	end
+
 
 end

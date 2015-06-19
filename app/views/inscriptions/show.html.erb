@@ -3,7 +3,10 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="page-header">
-				<h1><%= @inscription.team.name %> <small>en <%= @version.name %> de <%= @version.cup.name %></small></h1>
+				<h1>
+					<%= link_to @inscription.team.name, @inscription.team %> 
+					<small>en <%= @version.name %> de <%= @version.cup.name %></small>
+				</h1>
 			</div>
 		</div>
 	</div>

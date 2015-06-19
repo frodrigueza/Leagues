@@ -1,29 +1,33 @@
-<h1>Listing participations</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Inscription</th>
-      <th>User</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @participations.each do |participation| %>
-      <tr>
-        <td><%= participation.inscription %></td>
-        <td><%= participation.user %></td>
-        <td><%= link_to 'Show', participation %></td>
-        <td><%= link_to 'Edit', edit_participation_path(participation) %></td>
-        <td><%= link_to 'Destroy', participation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Participation', new_participation_path %>
+<%= render layout:'users/user' do %>
+    <div class="row not_together">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Competiciones
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Liga</th>
+                                <th>Copa</th>
+                                <th>Version</th>
+                                <th>Equipo</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <% @user.played_versions.each do |v| %>
+                            <tr>
+                                <td><%= link_to v.cup.league.name, v.cup.league %></td>
+                                <td><%= link_to v.cup.name, v.cup %></td>
+                                <td><%= link_to v.name, v %></td>
+                                <td><%= link_to v.user_inscription(@user).team.name, version_inscription_path(v,v.user_inscription(@user).team) %></td>
+                                <td><%= link_to 'Ver desempeño', version_participation_path(v, v.user_participation(@user)) %></td>
+                            </tr>
+                        <% end  %>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>

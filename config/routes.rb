@@ -33,9 +33,15 @@ Leagues::Application.routes.draw do
 
   resources :league_users
 
-  resources :users
+  resources :users do
+    resources :participations
+    resources :teams
+  end
 
-  resources :teams
+  resources :teams do 
+    resources :users
+    resources :inscriptions
+  end
 
   resources :memberships
 

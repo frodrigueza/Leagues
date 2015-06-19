@@ -12,4 +12,13 @@ class User < ActiveRecord::Base
 	def f_name
 		name + ' ' + lastname 
 	end
+
+	def played_versions
+		array = []
+		self.participations.each do |p|
+			array << p.inscription.version
+		end
+
+		array
+	end
 end

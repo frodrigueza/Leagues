@@ -47,6 +47,39 @@ class Inscription < ActiveRecord::Base
 		array.sort_by {|x| [x.round.stage_id, x.round_id]}
 	end
 
+	def points_on_game(game)
+		goals_for = goals_for_on_game(game).count
+		goals_against = goals_against_on_game(game).count
+
+		if goals_for > goals_against
+			return 3
+		elsif goals_for == goals_against
+			return 1
+		elsif goals_against > goals_for
+			return 0
+		end
+	end
+
+	def goals_for_on_game(game)
+		if game.local_inscription_id == self.id
+			return game.local_goals
+		elsif game.away_inscription_id == self.id
+			return game.away_goals
+		else
+			return []
+		end
+	end
+
+	def goals_against_on_game(game)
+		if game.local_inscription_id == self.id
+			return game.away_goals
+		elsif game.away_inscription_id == self.id
+			return game.local_goals
+		else
+			return []
+		end
+	end
+
 	def stads(stage)
 		points = 0
 		pg = 0
@@ -58,42 +91,25 @@ class Inscription < ActiveRecord::Base
 		dif = 0
 		rend = 0
 
-		games(stage).each do |g|
-			local_goals = g.local_goals
-			away_goals = g.away_goals
-
+		stage_games(stage).each do |object|
+			g = object[:game]
 
 			if g.played
 				pg += 1
-				if g.local_inscription_id == self.id
+				points += points_on_game(g)
 
-					goals_for += local_goals.count
-					goals_against += away_goals.count
-
-					if local_goals.count > away_goals.count
-						points += 3
+				case points_on_game(g)
+					when 3
 						wg += 1
-					elsif local_goals.count == away_goals.count
-						points += 1
+					when 1
 						tg += 1
-					else
+					when 0
 						lg += 1
-					end
-				elsif g.away_inscription_id == self.id
-
-					goals_for += away_goals.count
-					goals_against += local_goals.count
-
-					if away_goals.count > local_goals.count
-						points += 3
-						wg += 1
-					elsif away_goals.count == local_goals.count
-						points += 1
-						tg += 1
-					else
-						lg += 1
-					end
 				end
+
+				goals_for += goals_for_on_game(g).count
+				goals_against += goals_against_on_game(g).count
+
 			end
 		end
 
@@ -113,5 +129,29 @@ class Inscription < ActiveRecord::Base
 		}
 
 		return stads_hash
+	end
+
+	def points_on_stage(stage)
+		points = 0
+		stage.games.each do |g|
+			points += points_on_game(g)
+		end
+
+		return points
+	end
+
+	def points_on_version(version)
+		points = 0
+
+		games_on_version(version).each do |g|
+			points += points_on_game(g)
+		end
+
+		return points
+	end
+
+	def performance_on_version
+		posible_points = games_on_version(version).select{|x| x.played == true}.count*3
+		return (points_on_version(version)*100)/posible_points
 	end
 end

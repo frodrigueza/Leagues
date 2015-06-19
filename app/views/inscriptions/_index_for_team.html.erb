@@ -1,0 +1,34 @@
+<%= render layout:'teams/team' do %>
+
+<div class="row not_together">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Competiciones
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Liga</th>
+                        <th>Copa</th>
+                        <th>Version</th>
+                        <th>Equipos inscritos</th>
+                        <th>Rendimiento</th>
+                    </tr>
+                </thead>
+                <% @team.inscriptions.each do |i| %>
+                    <tr>
+                        <td><%= link_to i.version.cup.league.name, i.version.cup.league %></td>
+                        <td><%= link_to i.version.cup.name, i.version.cup %></td>
+                        <td><%= link_to i.version.name, version_inscription_path(i.version, i) %></td>
+                        <td><%= i.version.inscriptions.count %></td>
+                        <td><%= i.performance_on_version %> %</td>
+                    </tr>
+                <% end %>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<% end %>

@@ -1,0 +1,19 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="page-header">
+			<h1><%= @team.name %></h1>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<ul class="nav nav-tabs">
+			<li><%= link_to 'Perfil', @team %></li>
+			<li><%= link_to 'Jugadores', team_users_path(@team) %></li>
+			<li><%= link_to 'Competiciones', team_inscriptions_path(@team) %></li>
+		</ul>
+	</div>
+</div>
+
+<%= yield %>

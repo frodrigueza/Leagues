@@ -1,22 +1,6 @@
-<h1><%= @team.name %></h1>
-<div class="row">
-	<div class="col-md-6">
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				Miembros del equipo
-			</div>
-			<table class="table">
-				<thead>
-					<th>Nombres</th>
-				</thead>
-				<% @team.users.each do |u| %>
-					<tr>
-						<td><%= link_to u.f_name, u %></td>
-					</tr>
-				<% end %>
-			</table>
-		</div>
-	</div>
-</div>
+<%= render layout:'teams/team' do %>
+
+info del equipo
 
 
+<% end %>

@@ -1,29 +1,29 @@
-<h1>Listing teams</h1>
+<%= render layout:'users/user' do %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Memberships</th>
-      <th>Inscriptions</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @teams.each do |team| %>
-      <tr>
-        <td><%= team.memberships %></td>
-        <td><%= team.inscriptions %></td>
-        <td><%= link_to 'Show', team %></td>
-        <td><%= link_to 'Edit', edit_team_path(team) %></td>
-        <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Team', new_team_path %>
+<div class="row not_together">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+            Equipos
+            </div>
+            
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nombre equipo</th>
+                            <th>Integrantes</th>
+                        </tr>
+                    </thead>
+                    <% @user.teams.each do |t| %>
+                        <tr>
+                            <td><%= link_to t.name, t %></td>
+                            <td><%= t.users.count %></td>
+                        </tr>
+                    <% end %>
+                </table>
+            </div>
+        </div>    
+    </div>  
+</div>
+<% end %>

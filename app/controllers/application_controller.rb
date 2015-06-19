@@ -18,5 +18,13 @@ class ApplicationController < ActionController::Base
 		if params[:inscription_id]
 			@incription = Inscription.find(params[:inscription_id].to_i)
 		end
+
+		if params[:user_id]
+			@user = User.find(params[:user_id])
+		end
+
+		if params[:team_id]
+			@team = Team.find(params[:team_id])
+		end
 	end
 end
